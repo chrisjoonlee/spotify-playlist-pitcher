@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import PlaylistWidget from './PlaylistWidget';
+import './Playlists.css'
 
 const Playlists = () => {
     const [playlists, setPlaylists] = useState([]);
@@ -23,13 +24,15 @@ const Playlists = () => {
     }, []);
 
     return (
-        <>
-            <h1>Playlists</h1>
-            {
-                playlists.length > 0 && playlists.map(playlist => <PlaylistWidget playlist={playlist} />
-                )
-            }
-        </>
+        <div className="playlists-page">
+            <h1>PLAYLISTS</h1>
+            <div className="playlists-container">
+                {
+                    playlists.length > 0 && playlists.map(playlist => <PlaylistWidget playlist={playlist} />
+                    )
+                }
+            </div>
+        </div>
     );
 }
 

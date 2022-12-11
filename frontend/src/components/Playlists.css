@@ -1,0 +1,10 @@
+.playlists-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playlists-page>h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}

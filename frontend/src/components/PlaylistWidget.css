@@ -1,0 +1,33 @@
+.playlist-widget {
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    margin: 0 15px 15px 15px;
+}
+
+.playlist-widget a {
+    text-decoration: none;
+}
+
+.playlist-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.playlist-owner-line {
+    margin-top: 10px;
+}
+
+.playlist-owner {
+    font-weight: 500;
+}
+
+.playlist-widget img {
+    width: 150px;
+    margin-right: 15px;
+}
+
+.playlist-description {
+    font-size: 0.9rem;
+    margin: 0
+}
