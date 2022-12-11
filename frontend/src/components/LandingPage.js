@@ -11,8 +11,11 @@ const LandingPage = () => {
     useEffect(() => {
         // After the user accepts Spotify's API usage
         if (searchParams.get("code")) {
-            // Call to Express server to fetch Spotify's auth token
-            const response = fetch("http://localhost:3001/code?code=" + searchParams.get("code"));
+            // Call to Express server to receive the access token
+            fetch("http://localhost:3001/code?code=" + searchParams.get("code"))
+                .then(response => response.json())
+                .then(token => localStorage.setItem("spotify_access_token", token))
+                .catch(err => console.error(err));
         }
     }, [searchParams])
 

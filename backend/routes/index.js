@@ -12,7 +12,7 @@ const auth_str = "Basic " +
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.send('Slurp that dick till it cum!');
+  res.send('Express server');
 });
 
 router.get('/code', async function (req, res) {
@@ -37,9 +37,9 @@ router.get('/code', async function (req, res) {
     return;
   }
 
-  // Store access token in local storage
+  // Send access token to the front end
   if (data.access_token) {
-    localStorage.setItem("spotify_access_token", data.access_token);
+    res.json(data.access_token);
   }
 });
 
