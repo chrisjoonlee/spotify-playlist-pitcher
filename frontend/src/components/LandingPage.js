@@ -19,10 +19,12 @@ const LandingPage = () => {
                 .then(response => response.json())
                 .then(token => localStorage.setItem("spotify_access_token", token))
                 .then(() => {
-                    console.log("REDIRECT")
                     navigate("/playlists")
                 })
-                .catch(err => console.error(err));
+                .catch(err => {
+                    console.error(err)
+                    navigate("/access-error")
+                });
         }
     }, [searchParams])
 
