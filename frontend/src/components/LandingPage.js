@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const LandingPage = () => {
     // Define variables for Spotify API access
@@ -8,6 +8,9 @@ const LandingPage = () => {
 
     let [searchParams, setSearchParams] = useSearchParams();
 
+    const navigate = useNavigate();
+
+    // Receive Spotify's access token
     useEffect(() => {
         // After the user accepts Spotify's API usage
         if (searchParams.get("code")) {
@@ -15,6 +18,10 @@ const LandingPage = () => {
             fetch("http://localhost:3001/code?code=" + searchParams.get("code"))
                 .then(response => response.json())
                 .then(token => localStorage.setItem("spotify_access_token", token))
+                .then(() => {
+                    console.log("REDIRECT")
+                    navigate("/playlists")
+                })
                 .catch(err => console.error(err));
         }
     }, [searchParams])
@@ -35,7 +42,7 @@ const LandingPage = () => {
     // If "code" appears in the url params
     else {
         return (
-            <>hey baby</>
+            <>Processing request...</>
         )
     }
 };
