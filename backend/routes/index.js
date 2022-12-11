@@ -7,7 +7,7 @@ const router = express.Router();
 // Define variables for Spotify API access
 const client_id = "23a3c6f9357c415085bd245ca334cfab";
 const client_secret = "aa5e3e7a7313476dbe60910e78022075";
-const auth_str = "Authorization: Basic " +
+const auth_str = "Basic " +
   Buffer.from(client_id + ":" + client_secret).toString('base64');
 
 /* GET home page. */
@@ -20,17 +20,14 @@ router.get('/code', async function (req, res) {
   const code = req.query.code;
   console.log("Code", code);
 
+  // Send token request to Spotify API
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       "Authorization": auth_str
     },
-    body: JSON.stringify({
-      grant_type: "authorization_code",
-      code: code,
-      redirect_uri: "http://271.0.0.1/"
-    })
+    body: `grant_type=authorization_code&code=${code}&redirect_uri=http://127.0.0.1:3000/`
   });
   console.log("RESPONSE", response)
 });
