@@ -12,10 +12,11 @@
 .playlist-title {
     margin: 0;
     font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .playlist-owner-line {
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .playlist-owner {
@@ -29,5 +30,5 @@
 
 .playlist-description {
     font-size: 0.9rem;
-    margin: 0
+    margin-bottom: 10px;
 }

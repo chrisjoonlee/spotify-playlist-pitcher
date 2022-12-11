@@ -22,6 +22,8 @@ const PlaylistWidget = ({ playlist }) => {
                 <p className="playlist-description">
                     {playlist.description}
                 </p>
+
+                <p>Tracks: {playlist.tracks.total}</p>
             </div>
         </div >
     );

@@ -1,0 +1,25 @@
+.categories-nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10px;
+}
+
+.category-widget {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.8rem;
+    margin: 0 5px 10px 5px;
+    color: white;
+    background-color: rgb(85, 85, 85);
+    padding: 10px 10px;
+    border-radius: 50px;
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    margin: 10px 5px 0px 5px;
+}
