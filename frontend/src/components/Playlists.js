@@ -9,23 +9,60 @@ const Playlists = () => {
     const [playlists, setPlaylists] = useState([]);
 
     useEffect(() => {
+        // GET CATEGORIES
         const baseUrl = "https://api.spotify.com/v1/browse"
+        const categoriesUrl = baseUrl + "/categories?limit=50"
         const auth_str = "Bearer " + localStorage.getItem("spotify_access_token");
 
-        // GET CATEGORIES
-        let categoriesUrl = baseUrl + "/categories"
-        categoriesUrl += "?limit=50"
-        fetch(categoriesUrl, {
-            method: "GET",
-            headers: {
-                "Authorization": auth_str
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("CATEGORIES", data);
-                setCategories(data.categories.items);
+        // Fetch all categories using 2 fetch calls
+        Promise.all([
+            fetch(categoriesUrl, {
+                method: "GET",
+                headers: {
+                    "Authorization": auth_str
+                }
+            }),
+            fetch(categoriesUrl + "&offset=50", {
+                method: "GET",
+                headers: {
+                    "Authorization": auth_str
+                }
             })
+        ]).then(([response1, response2]) => {
+            return Promise.all([response1.json(), response2.json()])
+        }).then(([data1, data2]) => {
+            console.log(data1)
+            console.log(data2)
+            // Store the categories in state
+            setCategories(data1.categories.items.concat(data2.categories.items))
+        })
+
+        // fetch(categoriesUrl, {
+        //     method: "GET",
+        //     headers: {
+        //         "Authorization": auth_str
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log("FIRST 50 CATEGORIES", data);
+        //         setCategories(data.categories.items);
+        //     })
+
+        // Fetch remaining categories
+        // fetch(categoriesUrl + "&offset=50", {
+        //     method: "GET",
+        //     headers: {
+        //         "Authorization": auth_str
+        //     }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log("REMAINING CATEGORIES", data)
+        //         setCategories(categories.concat(data));
+        //     });
+
+
 
         // GET PLAYLISTS
 
