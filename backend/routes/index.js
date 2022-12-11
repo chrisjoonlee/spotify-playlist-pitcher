@@ -29,7 +29,18 @@ router.get('/code', async function (req, res) {
     },
     body: `grant_type=authorization_code&code=${code}&redirect_uri=http://127.0.0.1:3000/`
   });
-  console.log("RESPONSE", response)
+  const data = await response.json();
+
+  // If the response status isn't 200, send an error message
+  if (response.status != 200) {
+    console.log("Error", response);
+    return;
+  }
+
+  // Store access token in local storage
+  if (data.access_token) {
+    localStorage.setItem("spotify_access_token", data.access_token);
+  }
 });
 
 module.exports = router;
