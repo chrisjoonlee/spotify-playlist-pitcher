@@ -34,12 +34,13 @@ router.get('/code', async function (req, res) {
   // If the response status isn't 200, send an error message
   if (response.status != 200) {
     console.log("Error", response);
-    return;
+    res.json(new Error(response));
+    return
   }
 
   // Send access token to the front end
   if (data.access_token) {
-    res.json(data.access_token);
+    return res.json(data.access_token);
   }
 });
 

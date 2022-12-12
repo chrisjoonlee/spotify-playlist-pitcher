@@ -41,6 +41,8 @@ const Playlists = () => {
             console.log(data2)
             // Store the categories in state
             setCategories(data1.categories.items.concat(data2.categories.items))
+        }).catch(err => {
+            setCategories([])
         })
     }, []);
 
@@ -82,7 +84,12 @@ const Playlists = () => {
                     }
 
                     {
-                        playlists.length == 0 &&
+                        categories.length == 0 &&
+                        <h2>There was a problem connecting to Spotify's API</h2>
+                    }
+
+                    {
+                        categories.length > 0 && playlists.length == 0 &&
                         <h2 className="no-playlists-msg">No playlists found.</h2>
                     }
                 </div>

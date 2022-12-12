@@ -6,20 +6,29 @@ import './LandingPage.css'
 const LandingPage = () => {
     // Define variables for Spotify API access
     const client_id = "23a3c6f9357c415085bd245ca334cfab";
-    const url = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=http://127.0.0.1:3000/`;
+    const url = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=${process.env.REACT_APP_HOST_URL}/`;
 
     let [searchParams, setSearchParams] = useSearchParams();
 
     const navigate = useNavigate();
 
+    console.log("HOST_URL", process.env.REACT_APP_HOST_URL);
+
     // Receive Spotify's access token
     useEffect(() => {
         // After the user accepts Spotify's API usage
         if (searchParams.get("code")) {
+            console.log(process.env.REACT_APP_SERVER_URL + "/code?code=" + searchParams.get("code"));
+
             // Call to Express server to receive the access token
-            fetch("http://localhost:3001/code?code=" + searchParams.get("code"))
-                .then(response => response.json())
-                .then(token => localStorage.setItem("spotify_access_token", token))
+            fetch(process.env.REACT_APP_SERVER_URL + "/code?code=" + searchParams.get("code"))
+                .then(response => {
+                    response.json();
+                })
+                .then(token => {
+                    console.log("ACCESS TOKEN", token);
+                    localStorage.setItem("spotify_access_token", token)
+                })
                 .then(() => {
                     navigate("/playlists")
                 })
