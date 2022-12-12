@@ -5,16 +5,19 @@ import reportWebVitals from './reportWebVitals';
 
 import App from './App';
 import CategoryProvider from './context/CategoryContext';
+import { ModalProvider } from './context/Modal';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CategoryProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </CategoryProvider>
+    <ModalProvider>
+      <CategoryProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CategoryProvider>
+    </ModalProvider>
   </React.StrictMode>
 );
 
