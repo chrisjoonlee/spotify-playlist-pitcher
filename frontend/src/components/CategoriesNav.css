@@ -22,7 +22,8 @@
     display: flex;
     flex-direction: column;
     margin: 0 10px;
-    position: static
+    position: static;
+    z-index: 1;
 }
 
 .category-widget {

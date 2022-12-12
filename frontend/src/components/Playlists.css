@@ -11,9 +11,15 @@
 
 .playlists-interface {
     display: flex;
-    max-width: 1000px;
+    width: 1000px;
 }
 
 .no-playlists-msg {
     margin-left: 20px;
+}
+
+@media screen and (max-width: 950px) {
+    .playlists-interface {
+        width: 98%;
+    }
 }

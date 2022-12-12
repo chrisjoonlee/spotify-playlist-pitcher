@@ -20,7 +20,7 @@ const PlaylistWidget = ({ playlist }) => {
                         <h2 className="playlist-title">{playlist.name}</h2>
 
                         <p className="playlist-owner-line">
-                            {playlist.owner.display_name}
+                            By {playlist.owner.display_name}
                         </p>
 
                         <p className="playlist-description">
