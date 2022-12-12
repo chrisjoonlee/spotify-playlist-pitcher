@@ -5,6 +5,7 @@ import { useCategory } from '../context/CategoryContext';
 import CategoriesNav from './CategoriesNav';
 import PlaylistWidget from './PlaylistWidget';
 import './Playlists.css'
+import './CategoriesNav.css'
 
 const Playlists = () => {
     const { category } = useCategory();
@@ -65,8 +66,11 @@ const Playlists = () => {
     return (
         <div className="playlists-page">
             <h1>PLAYLISTS</h1>
+            <div className="playlists-interface">
+                <button className="nav-toggle">
+                    GENRES
+                </button>
 
-            <div className="playlists-list">
                 <CategoriesNav categories={categories}
                     className="categories-nav" />
 

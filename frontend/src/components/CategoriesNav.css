@@ -1,12 +1,33 @@
+.nav-toggle {
+    background-color: var(--spotify-green);
+    border: 0px;
+    border-radius: 50px;
+    color: white;
+    display: none;
+    font-size: 1rem;
+    font-weight: 600;
+    left: 20px;
+    padding: 10px 10px;
+    position: absolute;
+    top: 55px;
+    transition: background-color 0.2s;
+    width: 120px;
+}
+
+.nav-toggle:hover {
+    background-color: green;
+}
+
 .categories-nav {
     display: flex;
     flex-direction: column;
     margin: 0 10px;
+    position: static
 }
 
 .category-widget {
     align-items: center;
-    background-color: #1DB954;
+    background-color: var(--spotify-green);
     border: 0px;
     border-radius: 50px;
     color: white;
@@ -19,14 +40,35 @@
     text-align: center;
     text-transform: uppercase;
     transition: background-color 0.2s;
+    width: 180px;
 }
 
 .category-widget:hover {
     background-color: green;
 }
 
-.category-icon {
-    width: 80px;
-    height: 80px;
-    margin: 10px 5px 0px 5px;
+@media screen and (max-width: 950px) {
+    .categories-nav {
+        display: none
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-toggle:hover+.categories-nav {
+        display: block;
+        position: absolute;
+        top: 20px;
+    }
+
+    .categories-nav:hover {
+        display: block;
+        position: absolute;
+        top: 20px;
+    }
+
+    .categories-nav:hover .category-widget {
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    }
 }

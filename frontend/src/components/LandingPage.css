@@ -13,7 +13,7 @@ h1 {
     padding: 20px 30px;
     font-size: 1.3rem;
     border: 0px;
-    background-color: #1DB954;
+    background-color: var(--spotify-green);
     color: black;
     font-weight: 600;
     border-radius: 50px;
