@@ -17,14 +17,10 @@ const PlaylistWidget = ({ playlist }) => {
                         <img src={playlist.images[0].url} />
                     </div>
                     <div className="playlist-info">
-                        <a href={playlist.href}>
-                            <h2 className="playlist-title">{playlist.name}</h2>
-                        </a>
+                        <h2 className="playlist-title">{playlist.name}</h2>
 
                         <p className="playlist-owner-line">
-                            By <a href={playlist.owner.href} className="playlist-owner">
-                                {playlist.owner.display_name}
-                            </a>
+                            {playlist.owner.display_name}
                         </p>
 
                         <p className="playlist-description">

@@ -54,16 +54,14 @@ const PlaylistDetails = ({ playlistId }) => {
                 <h2>TRACKS</h2>
                 <ul className="track-list">
                     {playlist.tracks.items.map((item, i) =>
-                        <a href={item.track.external_urls.spotify}>
+                        <a href={item.track.external_urls.spotify} target="_blank">
                             <div key={i} className="track-widget">
                                 <img src={item.track.album.images[0].url} />
 
                                 <div className="track-info">
                                     <p className="track-title">{item.track.name}</p>
-                                    <p className="album-line"><a href={item.track.album.external_urls.spotify}
-                                        className="album-title">
-                                        {item.track.album.name}
-                                    </a></p>                                </div>
+                                    <p className="album-line">{item.track.album.name}</p>
+                                </div>
                             </div>
 
                             <audio
@@ -76,9 +74,20 @@ const PlaylistDetails = ({ playlistId }) => {
             </div>
         );
     }
+    else if (playlist) {
+        return (
+            <div className="playlist-details-container">
+                <h2>
+                    Fetching data...
+                </h2>
+            </div>
+        );
+    }
     else {
         return (
-            <h1>Sorry, playlist details not available.</h1>
+            <div className="playlist-details-container">
+                <h2>Sorry, playlist details not available.</h2>
+            </div>
         );
     }
 }
