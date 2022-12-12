@@ -55,8 +55,8 @@ const Playlists = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-                setPlaylists(data.playlists.items)
+                console.log(data);
+                setPlaylists(data.playlists.items);
             })
             .catch(err => {
                 setPlaylists([])

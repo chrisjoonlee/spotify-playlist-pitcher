@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Modal } from '../context/Modal';
+import PlaylistDetails from './PlaylistDetails';
 import './PlaylistWidget.css'
 
 const PlaylistWidget = ({ playlist }) => {
@@ -34,11 +35,9 @@ const PlaylistWidget = ({ playlist }) => {
                     </div>
                 </div >
                 {showModal && (
-                    <Modal onClose={() => {
-                        setShowModal(false);
-                        console.log(showModal);
-                    }}>
-                        <h1>Modal</h1>
+                    <Modal onClose={() => setShowModal(false)}
+                        children={PlaylistDetails}>
+                        <PlaylistDetails playlistId={playlist.id} />
                     </Modal>
                 )}
             </>

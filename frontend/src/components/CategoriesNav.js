@@ -8,11 +8,14 @@ const CategoriesNav = ({ categories }) => {
 
     return (
         <nav className="categories-nav">
-            {categories.map(category => (
-                <button className="category-widget" onClick={() => {
-                    console.log(category.id);
-                    setCategory(category.id);
-                }}>
+            {categories.map((category, i) => (
+                <button
+                    key={i}
+                    className="category-widget"
+                    onClick={() => {
+                        console.log(category.id);
+                        setCategory(category.id);
+                    }}>
                     {category.name}
                 </button>
             ))}
