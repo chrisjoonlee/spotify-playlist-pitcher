@@ -5,8 +5,9 @@
     color: white;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
-    padding: 20px;
+    height: 90vh;
+    overflow-y: scroll;
+    padding: 20px 0;
     text-align: center;
     width: 500px;
 }
@@ -89,7 +90,55 @@
 
 .playlist-details-container h2 {
     font-weight: 800;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.track-list {
+    width: 100%;
+    padding: 0;
+}
+
+.track-widget {
+    background-color: rgb(85, 85, 85);
+    color: white;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+}
+
+.track-widget img {
+    width: 70px;
+}
+
+.track-info {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+.track-title {
+    font-size: 1rem;
+    font-weight: 800;
+    text-align: left;
+}
+
+.album-line {
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.album-title {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.track-list audio {
+    height: 20px;
+    margin: 10px 0 20px 0;
+    width: 90%;
 }
 
 .modal-close-btn {

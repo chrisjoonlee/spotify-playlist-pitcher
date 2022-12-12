@@ -52,25 +52,27 @@ const PlaylistDetails = ({ playlistId }) => {
                 <p className="playlist-details-description">{playlist.description}</p>
 
                 <h2>TRACKS</h2>
-                {/* <ul>
+                <ul className="track-list">
                     {playlist.tracks.items.map((item, i) =>
                         <a href={item.track.external_urls.spotify}>
                             <div key={i} className="track-widget">
                                 <img src={item.track.album.images[0].url} />
-                                <p>{item.track.name}</p>
-                                <p>Album: <a href={item.track.album.external_urls.spotify}>
-                                    {item.track.album.name}
-                                </a></p>
-                                <p>Popularity: {item.track.popularity}</p>
 
-                                <audio
-                                    controls
-                                    src={item.track.preview_url}>
-                                </audio>
+                                <div className="track-info">
+                                    <p className="track-title">{item.track.name}</p>
+                                    <p className="album-line"><a href={item.track.album.external_urls.spotify}
+                                        className="album-title">
+                                        {item.track.album.name}
+                                    </a></p>                                </div>
                             </div>
+
+                            <audio
+                                controls
+                                src={item.track.preview_url}>
+                            </audio>
                         </a>
                     )}
-                </ul> */}
+                </ul>
             </div>
         );
     }
