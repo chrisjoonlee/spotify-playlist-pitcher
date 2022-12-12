@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
@@ -5,8 +6,8 @@ const fetch = (...args) =>
 const router = express.Router();
 
 // Define variables for Spotify API access
-const client_id = "f5996dbb6e8b40978186c7cd1cabe92b";
-const client_secret = "f36dc175d76f45f1bf719e6b50320166";
+const client_id = process.env.CLIENT_ID;
+const client_secret = process.env.CLIENT_SECRET;
 const auth_str = "Basic " +
   Buffer.from(client_id + ":" + client_secret).toString('base64');
 

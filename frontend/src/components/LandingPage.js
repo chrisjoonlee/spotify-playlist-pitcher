@@ -5,8 +5,7 @@ import './LandingPage.css'
 
 const LandingPage = () => {
     // Define variables for Spotify API access
-    const client_id = "f5996dbb6e8b40978186c7cd1cabe92b";
-    const url = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=${process.env.REACT_APP_HOST_URL}/`;
+    const url = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_HOST_URL}/`;
 
     let [searchParams, setSearchParams] = useSearchParams();
 
