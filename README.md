@@ -15,12 +15,12 @@ This is a simple React app that connects to Spotify's API to present Spotify's e
 ### Option 1)
 
 Navigate to the root folder and run the following command:
-* docker-compose up
+* `docker-compose up`
 
 To clean up, run the following commands:
-* docker-compose down
-* docker image rm spotify-playlists-frontend-1
-* docker image rm spotify-playlists-backend-1
+* `docker-compose down`
+* `docker image rm spotify-playlists-frontend-1`
+* `docker image rm spotify-playlists-backend-1`
 
 ### Option 2)
 
