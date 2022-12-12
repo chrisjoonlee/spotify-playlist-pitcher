@@ -5,7 +5,7 @@ import './LandingPage.css'
 
 const LandingPage = () => {
     // Define variables for Spotify API access
-    const client_id = "23a3c6f9357c415085bd245ca334cfab";
+    const client_id = "f5996dbb6e8b40978186c7cd1cabe92b";
     const url = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=${process.env.REACT_APP_HOST_URL}/`;
 
     let [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +23,8 @@ const LandingPage = () => {
             // Call to Express server to receive the access token
             fetch(process.env.REACT_APP_SERVER_URL + "/code?code=" + searchParams.get("code"))
                 .then(response => {
-                    response.json();
+                    console.log("RESPONSE", response)
+                    return response.json();
                 })
                 .then(token => {
                     console.log("ACCESS TOKEN", token);
