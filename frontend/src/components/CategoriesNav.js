@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useCategory } from '../context/CategoryContext'
 
 import './CategoriesNav.css'
 
 const CategoriesNav = ({ categories }) => {
+    const { category, setCategory } = useCategory();
+
     return (
         <nav className="categories-nav">
             {categories.map(category => (
-                <div className="category-widget">
+                <button className="category-widget" onClick={() => {
+                    console.log(category.id);
+                    setCategory(category.id);
+                }}>
                     {category.name}
-                </div>
+                </button>
             ))}
         </nav>
     );

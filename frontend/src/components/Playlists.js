@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
+import { useCategory } from '../context/CategoryContext';
+
 import CategoriesNav from './CategoriesNav';
 import PlaylistWidget from './PlaylistWidget';
 import './Playlists.css'
 
 const Playlists = () => {
+    const { category } = useCategory();
+
     const [categories, setCategories] = useState([]);
     const [playlists, setPlaylists] = useState([]);
 
-    useEffect(() => {
-        // GET CATEGORIES
-        const baseUrl = "https://api.spotify.com/v1/browse"
-        const categoriesUrl = baseUrl + "/categories?limit=50"
-        const auth_str = "Bearer " + localStorage.getItem("spotify_access_token");
+    // Info for fetching from Spotify API
+    const baseUrl = "https://api.spotify.com/v1/browse"
+    const categoriesUrl = baseUrl + "/categories?limit=50"
+    const auth_str = "Bearer " + localStorage.getItem("spotify_access_token");
 
-        // Fetch all categories using 2 fetch calls
+    // FETCH CATEGORIES
+    useEffect(() => {
+        // Fetch categories using 2 fetch calls
         Promise.all([
             fetch(categoriesUrl, {
                 method: "GET",
@@ -36,68 +41,47 @@ const Playlists = () => {
             // Store the categories in state
             setCategories(data1.categories.items.concat(data2.categories.items))
         })
-
-        // fetch(categoriesUrl, {
-        //     method: "GET",
-        //     headers: {
-        //         "Authorization": auth_str
-        //     }
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log("FIRST 50 CATEGORIES", data);
-        //         setCategories(data.categories.items);
-        //     })
-
-        // Fetch remaining categories
-        // fetch(categoriesUrl + "&offset=50", {
-        //     method: "GET",
-        //     headers: {
-        //         "Authorization": auth_str
-        //     }
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log("REMAINING CATEGORIES", data)
-        //         setCategories(categories.concat(data));
-        //     });
-
-
-
-        // GET PLAYLISTS
-
-        // let url = 'https://api.spotify.com/v1/browse/featured-playlists';
-        // url += '?country=MX'
-        // url += '&limit=50'
-
-        const categoryId = "";
-        const playlistsUrl = `${baseUrl}/categories/${categoryId}/playlists`
-
-        // fetch(playlistsUrl, {
-        //     method: "GET",
-        //     headers: {
-        //         "Authorization": auth_str
-        //     }
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         setPlaylists(data.playlists.items)
-        //     })
     }, []);
+
+    // FETCH PLAYLISTS BASED ON CATEGORY
+    useEffect(() => {
+        const playlistsUrl = `${baseUrl}/categories/${category}/playlists?limit=50`
+        fetch(playlistsUrl, {
+            method: "GET",
+            headers: {
+                "Authorization": auth_str
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setPlaylists(data.playlists.items)
+            })
+            .catch(err => {
+                setPlaylists([])
+            })
+    }, [category]);
 
     return (
         <div className="playlists-page">
             <h1>PLAYLISTS</h1>
 
-            <CategoriesNav categories={categories} />
+            <div className="playlists-list">
+                <CategoriesNav categories={categories}
+                    className="categories-nav" />
 
-            <div className="playlists-container">
-                {
-                    playlists.length > 0 &&
-                    playlists.map((playlist, i) => <PlaylistWidget key={i} playlist={playlist} />
-                    )
-                }
+                <div className="playlists-container">
+                    {
+                        playlists.length > 0 &&
+                        playlists.map((playlist, i) => <PlaylistWidget key={i} playlist={playlist} />
+                        )
+                    }
+
+                    {
+                        playlists.length == 0 &&
+                        <h2 className="no-playlists-msg">No playlists found.</h2>
+                    }
+                </div>
             </div>
         </div>
     );

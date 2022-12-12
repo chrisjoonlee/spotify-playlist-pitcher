@@ -32,3 +32,9 @@
     font-size: 0.9rem;
     margin-bottom: 10px;
 }
+
+@media screen and (max-width: 640px) {
+    .playlist-widget img {
+        display: none;
+    }
+}

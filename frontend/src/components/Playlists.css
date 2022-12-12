@@ -8,3 +8,18 @@
     font-size: 2.5rem;
     font-weight: 800;
 }
+
+.playlists-list {
+    display: flex;
+    max-width: 1000px;
+}
+
+.no-playlists-msg {
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 950px) {
+    .categories-nav {
+        display: none
+    }
+}

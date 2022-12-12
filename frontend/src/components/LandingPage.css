@@ -1,0 +1,31 @@
+.landing-page-container {
+    padding-top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.access-btn {
+    padding: 20px 30px;
+    font-size: 1.3rem;
+    border: 0px;
+    background-color: #1DB954;
+    color: black;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: background-color 0.2s, color 0.2s;
+    text-transform: uppercase;
+}
+
+.access-btn:hover {
+    background-color: green;
+    color: white;
+}
+
+.processing-msg {
+    font-size: 1.2rem;
+}

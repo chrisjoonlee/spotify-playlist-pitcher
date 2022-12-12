@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+import './LandingPage.css'
+
 const LandingPage = () => {
     // Define variables for Spotify API access
     const client_id = "23a3c6f9357c415085bd245ca334cfab";
@@ -31,20 +33,22 @@ const LandingPage = () => {
     // Landing page
     if (!searchParams.get("code")) {
         return (
-            <>
-                <h1>Spotify Playlist Pitcher</h1>
-                <button onClick={() => {
+            <div className="landing-page-container">
+                <h1>SPOTIFY PLAYLISTS</h1>
+                <button className="access-btn" onClick={() => {
                     window.location.replace(url);
                 }}>
                     Access the Spotify API
                 </button>
-            </>
+            </div>
         )
     }
     // If "code" appears in the url params
     else {
         return (
-            <>Processing request...</>
+            <div className="landing-page-container">
+                <p className="processing-msg">Processing request...</p>
+            </div>
         )
     }
 };
