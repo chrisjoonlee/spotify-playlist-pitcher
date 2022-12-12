@@ -1,0 +1,104 @@
+.playlist-details-container {
+    align-items: center;
+    background-color: rgb(58, 58, 58);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    padding: 20px;
+    text-align: center;
+    width: 500px;
+}
+
+.playlist-details-container h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.playlist-details-owner-line {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+}
+
+.playlist-details-owner {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color .2s;
+}
+
+.playlist-details-owner:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.spotify-link-btn {
+    background-color: rgb(199, 199, 199);
+    border: 0px;
+    border-radius: 50px;
+    font-weight: 800;
+    padding: 7px 17px;
+    margin-bottom: 10px;
+}
+
+.playlist-details-img-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.playlist-details-container img {
+    width: 300px;
+}
+
+.img-link-msg {
+    display: none;
+    font-size: 2rem;
+    font-weight: 800;
+    position: absolute;
+    top: 120px;
+    color: white;
+}
+
+.playlist-details-img-container:hover {
+    background-color: black;
+}
+
+.playlist-details-img-container:hover img {
+    opacity: 0.5;
+}
+
+.playlist-details-img-container:hover .img-link-msg {
+    display: block;
+}
+
+.follower-count {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 15px 0;
+    opacity: 0.7;
+}
+
+.playlist-details-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    padding: 0 30px;
+}
+
+.playlist-details-container h2 {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.modal-close-btn {
+    background-color: rgb(36, 36, 36);
+    border: 0px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: white;
+    padding: 10px 13px;
+    top: 5px;
+    z-index: 1;
+}

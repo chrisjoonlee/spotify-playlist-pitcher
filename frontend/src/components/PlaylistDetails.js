@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+import './PlaylistDetails.css'
+
 const PlaylistDetails = ({ playlistId }) => {
     const [playlist, setPlaylist] = useState({});
+
+    const commaFormat = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     // FETCH PLAYLIST DETAILS
     useEffect(() => {
@@ -27,16 +33,26 @@ const PlaylistDetails = ({ playlistId }) => {
     if (Object.keys(playlist).length > 0) {
         console.log(playlist)
         return (
-            <div>
-                <h1>Playlist Details</h1>
-                <p>By <a href={playlist.owner.external_urls.spotify}>{playlist.owner.display_name}</a></p>
-                <img src={playlist.images[0].url} />
-                <p>{playlist.description}</p>
-                <a href={playlist.external_urls.spotify}>Link</a>
-                <p>Followers: {playlist.followers.total}</p>
+            <div className="playlist-details-container">
+                <h1>{playlist.name}</h1>
+                <p className="playlist-details-owner-line">
+                    By <a href={playlist.owner.external_urls.spotify}
+                        className="playlist-details-owner">
+                        {playlist.owner.display_name}
+                    </a></p>
 
-                <h2>Tracks</h2>
-                <ul>
+                <a href={playlist.external_urls.spotify} target="_blank">
+                    <div className="playlist-details-img-container">
+                        <img src={playlist.images[0].url} />
+                        <div className="img-link-msg">GO TO SPOTIFY</div>
+                    </div>
+                </a>
+
+                <p className="follower-count">FOLLOWERS: {commaFormat(playlist.followers.total)}</p>
+                <p className="playlist-details-description">{playlist.description}</p>
+
+                <h2>TRACKS</h2>
+                {/* <ul>
                     {playlist.tracks.items.map((item, i) =>
                         <a href={item.track.external_urls.spotify}>
                             <div key={i} className="track-widget">
@@ -54,7 +70,7 @@ const PlaylistDetails = ({ playlistId }) => {
                             </div>
                         </a>
                     )}
-                </ul>
+                </ul> */}
             </div>
         );
     }
