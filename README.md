@@ -12,6 +12,8 @@ This is a simple React app that connects to Spotify's API to present Spotify's e
 
 ## How to use
 
+IMPORTANT: Please create an `.env` file in the backend folder and in the frontend folder, imitating the `.env.example` files provided. A client ID and client secret for the Spotify API can be obtained through their website for developers: https://developer.spotify.com/dashboard/login
+
 ### Option 1)
 
 Navigate to the root folder and run the following command:
