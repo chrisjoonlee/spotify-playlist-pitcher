@@ -15,6 +15,10 @@ This is a simple React app that connects to Spotify's API to present Spotify's e
 IMPORTANT: Please create an `.env` file in the backend folder and in the frontend folder, imitating the `.env.example` files provided. A client ID and client secret for the Spotify API can be obtained through their website for developers: https://developer.spotify.com/dashboard/login
 
 ### Option 1)
+Go to the online app phere](http://chrisjoonlee-spotify-playlists.herokuapp.com/)
+(Deployed through Heroku)
+
+### Option 2)
 
 Navigate to the root folder and run the following command:
 * `docker-compose up`
@@ -24,7 +28,7 @@ To clean up, run the following commands:
 * `docker image rm spotify-playlists-frontend-1`
 * `docker image rm spotify-playlists-backend-1`
 
-### Option 2)
+### Option 3)
 
 Navigate to the backend folder and run the following commands:
 * `npm install`
