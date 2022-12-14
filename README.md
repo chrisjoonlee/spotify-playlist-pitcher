@@ -15,7 +15,7 @@ This is a simple React app that connects to Spotify's API to present Spotify's e
 IMPORTANT: Please create an `.env` file in the backend folder and in the frontend folder, imitating the `.env.example` files provided. A client ID and client secret for the Spotify API can be obtained through their website for developers: https://developer.spotify.com/dashboard/login
 
 ### Option 1)
-Go to the online app phere](http://chrisjoonlee-spotify-playlists.herokuapp.com/)
+Go to the online app [here](http://chrisjoonlee-spotify-playlists.herokuapp.com/)
 (Deployed through Heroku)
 
 ### Option 2)
